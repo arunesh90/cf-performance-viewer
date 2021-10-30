@@ -32,4 +32,11 @@ resource "azurerm_function_app" "lighthouse_app" {
   storage_account_name       = azurerm_storage_account.main_storage.name
   storage_account_access_key = azurerm_storage_account.main_storage.primary_access_key
   version                    = "~3"
+
+  app_settings = {
+    "WEBSITE_RUN_FROM_PACKAGE"       = ""
+    "FUNCTIONS_WORKER_RUNTIME"       = "node"
+    "WEBSITE_NODE_DEFAULT_VERSION"   = "~14"
+    "APPINSIGHTS_INSTRUMENTATIONKEY" = ""
+  }
 }
