@@ -50,6 +50,7 @@ resource "azurerm_function_app" "lighthouse_app" {
     "WEBSITE_RUN_FROM_PACKAGE"       = ""
     "FUNCTIONS_WORKER_RUNTIME"       = "node"
     "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.app_insights.instrumentation_key
+    "PLAYWRIGHT_BROWSERS_PATH"       = "0"
   }
 
   lifecycle {
