@@ -31,4 +31,5 @@ resource "azurerm_function_app" "lighthouse_app" {
   app_service_plan_id        = azurerm_app_service_plan.main_plan.id
   storage_account_name       = azurerm_storage_account.main_storage.name
   storage_account_access_key = azurerm_storage_account.main_storage.primary_access_key
+  version                    = "~3"
 }
