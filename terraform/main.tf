@@ -40,9 +40,10 @@ resource "azurerm_function_app" "lighthouse_app" {
   storage_account_access_key = azurerm_storage_account.main_storage.primary_access_key
   os_type                    = "linux"
   version                    = "~3"
+  daily_memory_time_quota    = 900
 
   site_config {
-    linux_fx_version          = "node|12"
+    linux_fx_version          = "node|14"
     use_32_bit_worker_process = false
   }
 
