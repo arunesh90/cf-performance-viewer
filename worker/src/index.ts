@@ -1,11 +1,30 @@
 import { Router } from 'itty-router'
+import { measurementsRouter } from './routes/measurements'
 
-const router = Router()
+const rootRouter = Router()
+const apiRouter = Router({base: '/api'})
 
-router.get('/', () => {
-  return new Response('test2')
+rootRouter.all('/api/*', apiRouter.handle)
+
+apiRouter.all('/measurements/*', measurementsRouter.handle)
+
+rootRouter.options('*', () => {
+  return new Response('OK')
 })
 
-addEventListener('fetch', (event) => {
-  event.respondWith(router.handle(event.request, event))
+rootRouter.all('*', () => {
+  return new Response('Not Found', {
+    status: 404
+  })
+})
+
+// @ts-ignore
+addEventListener('fetch', (event: FetchEvent) => {
+  event.respondWith(rootRouter.handle(event.request, event).then((response: Response) => {
+    response.headers.set('access-control-allow-origin', '*')
+    response.headers.set('access-control-max-age', '86400')
+    response.headers.set('access-control-allow-headers', 'Origin, X-Requested-With, Content-Type, Accept')
+
+    return response
+  }))
 })

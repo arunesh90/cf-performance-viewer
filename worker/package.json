@@ -7,7 +7,9 @@
     "build": "webpack",
     "dev": "miniflare",
     "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
-    "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'"
+    "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
+    "worker-publish": "wrangler publish",
+    "worker-preview": "wrangler preview"
   },
   "author": "author",
   "license": "MIT OR Apache-2.0",
@@ -21,13 +23,16 @@
   "dependencies": {
     "faunadb": "^4.4.1",
     "itty-router": "^2.4.4",
+    "url-polyfill": "^1.1.12",
     "worktop": "^0.7.3"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^3.0.0",
+    "@types/node": "^16.11.6",
     "@types/service-worker-mock": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^4.16.1",
     "@typescript-eslint/parser": "^4.16.1",
+    "dotenv": "^10.0.0",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-typescript": "^3.0.0",

@@ -12,7 +12,8 @@
     "esModuleInterop": true,
     "types": [
       "@cloudflare/workers-types",
-      "@types/service-worker-mock"
+      "@types/service-worker-mock",
+      "node"
     ]
   },
   "include": ["src"],
