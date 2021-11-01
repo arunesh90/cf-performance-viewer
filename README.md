@@ -7,9 +7,10 @@
 > Fun small project I made to learn more about Cloudflare Workers, Cloudflare Pages, Fauna and Azure App Functions. I also used this project to participate in [Cloudflare's Developer Summer Challenge](https://blog.cloudflare.com/developer-summer-challenge/).
 
 [Example report](https://perf-viewer.snoozing.dev/?report=4cfb44f1-272d-4b5a-8792-2f5cfd23e105)
-![image](https://user-images.githubusercontent.com/5787588/139611941-cd7f0b32-3eb0-493d-8188-1c501e82f00a.png)
+![image](https://user-images.githubusercontent.com/5787588/139612162-1854b67f-763b-4145-9215-d993e8d1424e.png)
 
-## Things used
+
+## Things used for this project
 * Terraform for setting up Azure infrastructure
 * Azure App Functions to deploy a Lighthouse instance that the Cloudflare Worker can make use of
 * Fauna to store results and reports with, and to also have the ability to see previous reports 
