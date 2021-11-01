@@ -2,7 +2,6 @@
 <p align="center">
   <img src="https://img.shields.io/github/languages/top/arunesh90/cf-performance-viewer.svg" />
   <img src="https://img.shields.io/github/license/arunesh90/cf-performance-viewer.svg" />
-  <img src="https://images.microbadger.com/badges/image/arunesh90/cf-performance-viewer.svg" />
 </p>
 
 > Fun small(ish) project I made to learn Cloudflare Workers, Cloudflare Pages, Fauna and Azure App Functions more with
