@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/github/license/arunesh90/cf-performance-viewer.svg" />
 </p>
 
-> Fun small(ish) project I made to learn Cloudflare Workers, Cloudflare Pages, Fauna and Azure App Functions more with
+> Fun small(ish) project I made to learn Cloudflare Workers, Cloudflare Pages, Fauna and Azure App Functions more. I also used this project to participate in [Cloudflare's Developer Summer Challenge](https://blog.cloudflare.com/developer-summer-challenge/).
 
 ## Things used
 * Terraform for setting up Azure infrastructure
