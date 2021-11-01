@@ -15,6 +15,7 @@ import { FormEvent, useEffect, useRef } from 'react'
 import useLighthouseContext from '../context/Lighthouse'
 import LighthouseReport from '../components/LighthouseReport'
 import { useRouter } from 'next/dist/client/router'
+import GitHubRibbon from 'react-github-ribbons'
 
 const Home: NextPage = () => {
   const router                                                        = useRouter()
@@ -39,6 +40,8 @@ const Home: NextPage = () => {
       <Head>
         <title>Performance Viewer</title>
       </Head>
+
+      <GitHubRibbon href="https://github.com/arunesh90/cf-performance-viewer" />
 
       <Box
         style={{
