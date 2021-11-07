@@ -68,7 +68,7 @@ const Home: NextPage = () => {
               of your website today!
             </Heading>
             <Text fontSize='3xl' color={'black'} maxW={'4xl'}>
-              ⚡ Powered by Cloudflare Workers & Pages, Fauna and Azure ⚡
+              ⚡ Powered by Cloudflare&apos;s Workers, Pages and Azure ⚡
             </Text>
             <form onSubmit={(event) => submitCheck(event)} style={{
               width: '100%'

@@ -5,8 +5,14 @@ account_id = "d5e5859b3f99d48bc52d8a9140af8ef8"
 route = "perf.snoozing.dev/*"
 workers_dev = true
 compatibility_date = "2021-10-24"
+kv_namespaces = [
+  {binding = "LIGHTHOUSE_REPORTS", id = "619c4e50627141869e1651222b1224d9", preview_id = "619c4e50627141869e1651222b1224d9"}
+]
 
 [build]
 command = "npm install && npm run build"
 [build.upload]
 format = "service-worker"
+
+[miniflare]
+kv_persist = true

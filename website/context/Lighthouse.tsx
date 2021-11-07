@@ -10,6 +10,8 @@ export interface Context {
   getMeasurement(reportId: string): Promise<void>
 }
 
+const API_HOST = process.env.NEXT_PUBLIC_API_HOST || 'https://perf.snoozing.dev'
+
 const LighthouseContext = createContext<Context>({} as Context);
 export default function useLighthouseContext(): Context {
   return useContext(LighthouseContext ?? ({} as Context))
@@ -25,7 +27,7 @@ export function LighthouseProvider({children}: PropsWithChildren<unknown>) {
   const getMeasurement = async (reportId: string) => {
     setFetching(true)
 
-    const res  = await fetch(`https://perf.snoozing.dev/api/measurements/get?id=${reportId}`)
+    const res  = await fetch(`${API_HOST}/api/measurements/get?id=${reportId}`)
     const body = await res.json()
   
     setMeasurement(body.json)
@@ -36,7 +38,7 @@ export function LighthouseProvider({children}: PropsWithChildren<unknown>) {
 
   const createMeasurement = async (url: string) => {
     setFetching(true)
-    const res = await fetch('https://perf.snoozing.dev/api/measurements/new', {
+    const res = await fetch(`${API_HOST}/api/measurements/new`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json'

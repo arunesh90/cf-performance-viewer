@@ -3,3 +3,5 @@ node_modules/
 .terraform/
 dist/
 *.log
+.mf/
+package-lock.json

@@ -5,7 +5,7 @@
   "main": "dist/worker.js",
   "scripts": {
     "build": "webpack",
-    "dev": "miniflare",
+    "dev": "miniflare --watch",
     "format": "prettier --write  '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "lint": "eslint --max-warnings=0 src && prettier --check '*.{json,js}' 'src/**/*.{js,ts}' 'test/**/*.{js,ts}'",
     "worker-publish": "wrangler publish",

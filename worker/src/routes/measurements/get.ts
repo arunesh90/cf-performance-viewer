@@ -1,5 +1,3 @@
-import { query as q } from 'faunadb'
-import { fauna } from '../../fauna'
 import { routeHandler } from '../../types/routeHandler'
 
 const getMeasurementHandler: routeHandler = async (req) => {
@@ -11,16 +9,9 @@ const getMeasurementHandler: routeHandler = async (req) => {
     })
   }
 
-  const query = await fauna.query<any>(
-    q.Get(
-      q.Match(
-        q.Index('report_id'),
-        reportId
-      )
-    )
-  )
+  const report = await LIGHTHOUSE_REPORTS.get(`report-${reportId}`)
   
-  return new Response(JSON.stringify(query.data), {
+  return new Response(report, {
     headers: {
       'content-type': 'application/json'
     }
