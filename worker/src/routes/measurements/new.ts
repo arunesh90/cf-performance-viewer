@@ -31,7 +31,11 @@ const newMeasurementHandler: routeHandler = async (req) => {
     json: lighthouseReport.json
   }))
 
-  return new Response(JSON.stringify({html: lighthouseReport.html, json: lighthouseReport.json, report_id: reportId}), {
+  return new Response(JSON.stringify({
+    report_id: reportId,
+    html     : lighthouseReport.html,
+    json     : lighthouseReport.json
+  }), {
     headers: {
       'content-type': 'application/json'
     }

@@ -1,5 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import Background from '../components/background'
+import { FormEvent, useEffect, useRef } from 'react'
+import useLighthouseContext from '../context/Lighthouse'
+import LighthouseReport from '../components/LighthouseReport'
+import { useRouter } from 'next/dist/client/router'
+import GitHubRibbon from 'react-github-ribbons'
 import {
   Flex,
   Container,
@@ -10,17 +16,18 @@ import {
   Button,
   Box
 } from '@chakra-ui/react'
-import Background from '../components/background'
-import { FormEvent, useEffect, useRef } from 'react'
-import useLighthouseContext from '../context/Lighthouse'
-import LighthouseReport from '../components/LighthouseReport'
-import { useRouter } from 'next/dist/client/router'
-import GitHubRibbon from 'react-github-ribbons'
 
 const Home: NextPage = () => {
-  const router                                                        = useRouter()
-  const inputRef                                                      = useRef<HTMLInputElement>(null)
-  const { currentURL, isFetching, createMeasurement, getMeasurement } = useLighthouseContext()
+  const router   = useRouter()
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  const {
+    currentURL,
+    isFetching,
+    createMeasurement,
+    getMeasurement,
+    reportCount
+  } = useLighthouseContext()
 
   const submitCheck = (event: FormEvent) => {
     event.preventDefault()
@@ -61,14 +68,21 @@ const Home: NextPage = () => {
               fontWeight={600}
               fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
               lineHeight={'110%'}>
-              Check the{' '}
+              Check the {' '}
               <Text as={'span'} color={'orange.400'}>
-                performance{' '}
+                performance {' '}
               </Text>
               of your website today!
             </Heading>
             <Text fontSize='3xl' color={'black'} maxW={'4xl'}>
               ⚡ Powered by Cloudflare&apos;s Workers, Pages and Azure ⚡
+            </Text>
+            <Text style={{ marginTop: '1rem'}} fontSize='2xl' color={'black'} maxW={'4xl'}>
+            🚀 Already checked the performance of {' '}
+              <Text as={'span'} fontSize='3xl' color={'green.500'}>
+                {reportCount} {' '}
+              </Text>
+              websites 🚀
             </Text>
             <form onSubmit={(event) => submitCheck(event)} style={{
               width: '100%'

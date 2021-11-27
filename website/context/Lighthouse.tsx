@@ -1,7 +1,9 @@
 import { useRouter } from 'next/dist/client/router'
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
+import { useQuery } from 'react-query'
 
 export interface Context {
+  reportCount: number
   currentMeasurement: Record<string, any>
   currentHTMLReport: string
   currentURL: string
@@ -23,6 +25,18 @@ export function LighthouseProvider({children}: PropsWithChildren<unknown>) {
   const [isFetching, setFetching]            = useState(false)
   const [currentURL, setURL]                 = useState<string>('')
   const router                               = useRouter()
+
+  const { data: reportCount } = useQuery('reportCount', () => 
+    fetch(`${API_HOST}/api/measurements/count`).then(async (res) => {
+      const body = await res.json()
+
+      return body.count
+    }),
+    {
+      initialData: 0,
+      refetchOnWindowFocus: false
+    }
+  )
 
   const getMeasurement = async (reportId: string) => {
     setFetching(true)
@@ -65,7 +79,8 @@ export function LighthouseProvider({children}: PropsWithChildren<unknown>) {
         currentHTMLReport,
         currentURL,
         isFetching,
-        createMeasurement
+        createMeasurement,
+        reportCount
       }}
     >
       {children}

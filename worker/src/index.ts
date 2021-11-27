@@ -18,7 +18,6 @@ rootRouter.all('*', () => {
   })
 })
 
-// @ts-ignore
 addEventListener('fetch', (event: FetchEvent) => {
   event.respondWith(rootRouter.handle(event.request, event).then((response: Response) => {
     response.headers.set('access-control-allow-origin', '*')
